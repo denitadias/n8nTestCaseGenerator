@@ -1,0 +1,252 @@
+{
+  "name": "Test Case Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -352,
+        -64
+      ],
+      "id": "0cd98379-1ba7-4a43-8e42-87fe5694d3b0",
+      "name": "When chat message received",
+      "webhookId": "6da18554-6bc9-45fb-af3b-cd31307328e1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -144,
+        -64
+      ],
+      "id": "c53402ec-f23e-48ea-90a9-4dfcd69b6cb0",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-20b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -144,
+        96
+      ],
+      "id": "9196eb0d-8624-4f04-b976-2a61aaa2d307",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "RFopVUT97c4DFT21",
+          "name": "Groq account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "issueKey": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Issue_Key', ``, 'string') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.jiraTool",
+      "typeVersion": 1,
+      "position": [
+        16,
+        144
+      ],
+      "id": "7b600f3b-83a3-44ce-83e6-4f289613c990",
+      "name": "Read JIRA",
+      "credentials": {
+        "jiraSoftwareCloudApi": {
+          "id": "k0StuMBc9Phz4zpZ",
+          "name": "Jira SW Cloud account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1RNtG4m2JcbJE6nu1vJtYn5eAKMvfdjSKvQfRCk11K-c/edit?gid=587388326#gid=587388326",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 587388326,
+          "mode": "list",
+          "cachedResultName": "n8n-sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1RNtG4m2JcbJE6nu1vJtYn5eAKMvfdjSKvQfRCk11K-c/edit#gid=587388326"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Test Case ID": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Test_Case_ID', ``, 'string') }}",
+            "Test case": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Test_case', ``, 'string') }}",
+            "Pre-conditions": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Pre-conditions', ``, 'string') }}",
+            "Test data": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Test_data', ``, 'string') }}",
+            "Test steps": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Test_steps', ``, 'string') }}",
+            "Expected Results": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Expected_Results', ``, 'string') }}",
+            "Priority": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Priority', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Test Case ID",
+              "displayName": "Test Case ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Test case",
+              "displayName": "Test case",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pre-conditions",
+              "displayName": "Pre-conditions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Test data",
+              "displayName": "Test data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Test steps",
+              "displayName": "Test steps",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Expected Results",
+              "displayName": "Expected Results",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Priority",
+              "displayName": "Priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        288,
+        -16
+      ],
+      "id": "0c61ff57-de0a-46e6-b1e4-13facf6da8af",
+      "name": "n8n Test Case Generator",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aRHmEJhxlJipbHTZ",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read JIRA": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n Test Case Generator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "000fcb16-1495-4651-a245-756a96d3bffc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8a0841e4a16f053d33bbe6fd01973c5454d8f7d8f3b868e507587cc468eb58f3"
+  },
+  "id": "dv9qa19lMmaU2n9M",
+  "tags": []
+}
